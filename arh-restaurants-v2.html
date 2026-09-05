@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ARH — Websites for Restaurants That Actually Get You Customers</title>
+    <meta name="description" content="ARH builds simple, working websites for Pakistani, Indian and local restaurants — online menu, WhatsApp ordering, Google visibility. No tech headache.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');
+        [dir="rtl"] body,
+        [dir="rtl"] h1,
+        [dir="rtl"] h2,
+        [dir="rtl"] h3,
+        [dir="rtl"] p,
+        [dir="rtl"] span,
+        [dir="rtl"] a,
+        [dir="rtl"] label,
+        [dir="rtl"] li,
+        [dir="rtl"] button,
+        [dir="rtl"] input,
+        [dir="rtl"] textarea {
+            font-family: "Noto Nastaliq Urdu", serif
+        }
+        [dir="rtl"] h1,
+        [dir="rtl"] h2,
+        [dir="rtl"] h3 {
+            line-height: 1.7
+        }
+        [dir="rtl"] .logo {
+            font-family: "Fraunces", serif
+        }
+        [dir="rtl"] .hbadge {
+            right: auto;
+            left: 0;
+            transform: rotate(4deg)
+        }
+        [dir="rtl"] .hbadge2 {
+            left: auto;
+            right: 20px;
+            transform: rotate(-3deg)
+        }
+        [dir="rtl"] .wa-float {
+            right: auto;
+            left: 26px
+        }
+        [dir="rtl"] .mobile-menu .close-btn {
+            right: auto;
+            left: 24px
+        }
+        [dir="rtl"] .pplan .tag {
+            right: auto;
+            left: 26px
+        }
+        :root {
+            --maroon: #7A1F2B;
+            --maroon-dark: #5A1620;
+            --gold: #C9A227;
+            --gold-light: #E4C766;
+            --cream: #FBF3E7;
+            --cream-deep: #F3E6D3;
+            --charcoal: #241B16;
+            --muted: #7A6C60;
+            --green: #5C7A4A;
+            --line: #E4D5BE;
+            --max: 1200px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+        html {
+            scroll-behavior: smooth
+        }
+        body {
+            font-family: "Work Sans", sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            line-height: 1.6
+        }
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+        .wrap {
+            width: min(calc(100% - 40px), var(--max));
+            margin: auto
+        }
+        h1,
+        h2,
+        h3 {
+            font-family: "Fraunces", serif;
+            line-height: 1.05
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0
+        }
+        .logo {
+            font: 700 28px "Fraunces", serif;
+            color: var(--maroon)
+        }
+        .logo span {
+            color: var(--gold)
+        }
+        .logo small {
+            display: block;
+            font: 600 11px "Work Sans";
+            letter-spacing: .5px;
+            color: var(--muted);
+            margin-top: -2px
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-weight: 500;
+            font-size: 15px
+        }
+        .nav-links a {
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: .2s
+        }
+        .nav-links a:hover {
+            border-color: var(--gold)
+        }
+        .nav-cta {
+            background: var(--maroon);
+            color: var(--cream);
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: .2s
+        }
+        .nav-cta:hover {
+            background: var(--maroon-dark)
+        }
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--charcoal);
+            cursor: pointer
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--cream);
+            z-index: 999;
+            flex-direction: column;
+            padding: 90px 30px;
+            gap: 6px
+        }
+        .mobile-menu.open {
+            display: flex
+        }
+        .mobile-menu a {
+            font: 600 24px "Fraunces", serif;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line)
+        }
+        .mobile-menu .close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-size: 26px;
+            background: none;
+            border: none;
+            color: var(--charcoal)
+        }
+        .hero {
+            padding: 50px 0 90px;
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 60px;
+            align-items: center
+        }
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 700;
+            color: var(--maroon-dark)
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 600
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 500px;
+            margin: 22px 0 30px
+        }
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap
+        }
+        .btn-primary {
+            background: var(--maroon);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: .2s
+        }
+        .btn-primary:hover {
+            background: var(--maroon-dark);
+            transform: translateY(-2px)
+        }
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: .2s
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-2px)
+        }
+        .hero-visual {
+            position: relative;
+            height: 440px
+        }
+        .food-plate {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            top: 20px;
+            right: 40px;
+            box-shadow: 0 25px 50px -12px rgba(90, 22, 32, .35);
+            overflow: hidden;
+            background: #fff;
+            border: 8px solid #fff
+        }
+        .food-plate img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+        .hphone {
+            position: absolute;
+            width: 210px;
+            height: 400px;
+            background: #fff;
+            border-radius: 28px;
+            border: 8px solid var(--charcoal);
+            bottom: 0;
+            left: 20px;
+            box-shadow: 0 25px 50px -12px rgba(90, 22, 32, .35);
+            overflow: hidden;
+            z-index: 2
+        }
+        .hphone .screen-top {
+            height: 70px;
+            background: var(--maroon);
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            color: #fff;
+            font: 700 13px "Fraunces"
+        }
+        .hphone .screen-body {
+            padding: 14px
+        }
+        .hphone .chip {
+            background: var(--cream-deep);
+            border-radius: 10px;
+            height: 60px;
+            margin-bottom: 10px
+        }
+        .hphone .chip.wa {
+            background: #DCF8C6;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #075E54
+        }
+        .hbadge {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background: var(--gold);
+            color: var(--charcoal);
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+            transform: rotate(-4deg)
+        }
+        .hbadge2 {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            background: var(--green);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+            transform: rotate(3deg)
+        }
+        .trust-strip {
+            background: var(--maroon-dark);
+            color: var(--cream);
+            padding: 18px 0
+        }
+        .trust-inner {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 14px;
+            font-weight: 500
+        }
+        .trust-inner span {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+        section {
+            padding: 90px 0
+        }
+        .section-head {
+            max-width: 600px;
+            margin-bottom: 50px
+        }
+        .section-head h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            color: var(--maroon-dark);
+            font-weight: 700
+        }
+        .section-head p {
+            color: var(--muted);
+            margin-top: 14px;
+            font-size: 17px
+        }
+        .gal-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 40px
+        }
+        .gal-item {
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(90, 22, 32, .1);
+            background: #fff
+        }
+        .gal-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px
+        }
+        .svc {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px 26px;
+            box-shadow: 0 6px 20px rgba(90, 22, 32, .08);
+            transition: .25s
+        }
+        .svc:hover {
+            transform: translateY(-6px)
+        }
+        .svc .icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: var(--cream-deep);
+            display: grid;
+            place-items: center;
+            font-size: 24px;
+            margin-bottom: 18px
+        }
+        .svc h3 {
+            font-size: 19px;
+            color: var(--maroon-dark);
+            font-weight: 600
+        }
+        .svc p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 10px;
+            line-height: 1.6
+        }
+        .work {
+            background: var(--cream-deep);
+            border-radius: 28px;
+            padding: 55px;
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 50px;
+            align-items: center
+        }
+        .work-visual {
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 14px 40px rgba(90, 22, 32, .15)
+        }
+        .wv-top {
+            background: var(--maroon);
+            padding: 18px 22px;
+            color: #fff;
+            font: 700 18px "Fraunces";
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+        .wv-top .thumb {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+        .wv-top .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+        .wv-body {
+            padding: 20px 22px
+        }
+        .wv-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 13px
+        }
+        .wv-row:last-child {
+            border: none
+        }
+        .work-text h2 {
+            font-size: clamp(28px, 3.5vw, 38px);
+            color: var(--maroon-dark)
+        }
+        .work-text p {
+            color: var(--muted);
+            margin-top: 16px;
+            font-size: 16px;
+            line-height: 1.75
+        }
+        .work-text .btn-primary {
+            margin-top: 22px
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 800px;
+            margin: 0 auto
+        }
+        .pplan {
+            background: #fff;
+            border-radius: 22px;
+            padding: 38px;
+            box-shadow: 0 6px 20px rgba(90, 22, 32, .08);
+            position: relative
+        }
+        .pplan.pop {
+            background: var(--maroon-dark);
+            color: #fff
+        }
+        .pplan .tag {
+            position: absolute;
+            top: -14px;
+            right: 26px;
+            background: var(--gold);
+            color: var(--charcoal);
+            font-weight: 700;
+            font-size: 11px;
+            padding: 7px 14px;
+            border-radius: 999px
+        }
+        .pplan h3 {
+            font-size: 24px;
+            color: var(--maroon-dark)
+        }
+        .pplan.pop h3 {
+            color: #fff
+        }
+        .pplan .price {
+            font: 700 46px "Fraunces";
+            margin: 16px 0 20px;
+            color: var(--gold)
+        }
+        .pplan .price span {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--muted)
+        }
+        .pplan.pop .price span {
+            color: #E8D9C8
+        }
+        .pplan ul {
+            list-style: none;
+            margin-bottom: 26px
+        }
+        .pplan li {
+            padding: 9px 0;
+            border-top: 1px solid var(--line);
+            font-size: 14px;
+            display: flex;
+            gap: 10px
+        }
+        .pplan.pop li {
+            border-top-color: rgba(255, 255, 255, .15)
+        }
+        .pplan li:before {
+            content: "✓";
+            color: var(--gold);
+            font-weight: 700
+        }
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px
+        }
+        .testi {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(90, 22, 32, .08)
+        }
+        .stars {
+            color: var(--gold);
+            font-size: 15px;
+            margin-bottom: 14px
+        }
+        .testi p {
+            font-size: 15px;
+            color: var(--charcoal);
+            line-height: 1.65
+        }
+        .testi-name {
+            margin-top: 16px;
+            font-weight: 600;
+            color: var(--maroon-dark);
+            font-size: 14px
+        }
+        .faq-list {
+            border-top: 2px solid var(--line)
+        }
+        .faq-item {
+            border-bottom: 2px solid var(--line)
+        }
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 4px;
+            cursor: pointer;
+            font: 600 18px "Fraunces";
+            color: var(--maroon-dark)
+        }
+        .faq-q .plus {
+            font-size: 24px;
+            transition: .25s;
+            color: var(--gold)
+        }
+        .faq-item.open .plus {
+            transform: rotate(45deg)
+        }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: .3s ease
+        }
+        .faq-a p {
+            padding: 0 4px 24px;
+            color: var(--muted);
+            max-width: 600px
+        }
+        .faq-item.open .faq-a {
+            max-height: 200px
+        }
+        .contact {
+            background: var(--maroon-dark);
+            border-radius: 28px;
+            padding: 60px;
+            color: var(--cream)
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px
+        }
+        .contact h2 {
+            font-size: clamp(30px, 3.5vw, 42px);
+            color: #fff
+        }
+        .contact p {
+            color: #E8D9C8;
+            margin-top: 14px;
+            max-width: 400px
+        }
+        .contact-links {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px
+        }
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600
+        }
+        .form-field {
+            margin-bottom: 16px
+        }
+        .form-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            margin-bottom: 7px;
+            color: #E8D9C8
+        }
+        .form-field input,
+        .form-field textarea,
+        .form-field select {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 13px 15px;
+            font-family: inherit;
+            font-size: 14px;
+            background: #fff;
+            color: var(--charcoal)
+        }
+        .form-field textarea {
+            min-height: 90px;
+            resize: vertical
+        }
+        .submit-btn {
+            width: 100%;
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 6px
+        }
+        .submit-msg {
+            font-size: 13px;
+            margin-top: 12px;
+            display: none;
+            font-weight: 600
+        }
+        .submit-msg.show {
+            display: block
+        }
+        footer {
+            background: var(--charcoal);
+            color: #B8AA9C;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px
+        }
+        footer strong {
+            color: var(--gold-light)
+        }
+        .wa-float {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #25D366;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+            z-index: 900
+        }
+        .wa-float svg {
+            width: 30px;
+            height: 30px
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none
+            }
+            .menu-btn {
+                display: block
+            }
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+            .hero p {
+                margin-inline: auto
+            }
+            .hero-actions {
+                justify-content: center
+            }
+            .hero-visual {
+                height: 340px;
+                margin-top: 20px
+            }
+            .hphone {
+                right: 0;
+                left: 0;
+                margin: auto
+            }
+            .services-grid {
+                grid-template-columns: 1fr 1fr
+            }
+            .work {
+                grid-template-columns: 1fr;
+                padding: 36px
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr
+            }
+            .testi-grid {
+                grid-template-columns: 1fr
+            }
+            .contact {
+                padding: 34px
+            }
+            .contact-grid {
+                grid-template-columns: 1fr
+            }
+        }
+        @media(max-width:560px) {
+            .services-grid {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="wrap">
+        <nav>
+            <a class="logo">ARH<span>.</span><small data-i18n="nav.tagline">WEBSITES FOR RESTAURANTS</small></a>
+            <div class="nav-links">
+                <a href="#services" data-i18n="nav.services">What You Get</a>
+                <a href="#work" data-i18n="nav.work">Example</a>
+                <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+                <a href="#faq" data-i18n="nav.faq">Questions</a>
+                <a href="#contact" data-i18n="nav.contact">Contact</a>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+                <button id="langToggle" style="border:2px solid var(--maroon);background:transparent;color:var(--maroon);font-weight:700;font-size:13px;padding:8px 14px;border-radius:8px;cursor:pointer">اردو</button>
+                <a class="nav-cta" href="#contact" data-i18n="nav.cta">Talk to Us</a>
+            </div>
+            <button class="menu-btn" id="menuBtn">☰</button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-btn" id="closeMenu">✕</button>
+        <a href="#services" data-i18n="nav.services">What You Get</a>
+        <a href="#work" data-i18n="nav.work">Example</a>
+        <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+        <a href="#faq" data-i18n="nav.faq">Questions</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+
+    <section class="wrap hero">
+        <div>
+            <h1 data-i18n="hero.title">Get more customers <em>ordering</em> and <em>booking</em> — without any tech headache.</h1>
+            <p data-i18n="hero.p">We build simple websites for restaurants — your menu online, orders on WhatsApp, and your restaurant showing up when people search on Google. We handle everything. You just get more customers.</p>
+            <div class="hero-actions">
+                <a class="btn-primary" href="#contact" data-i18n="hero.cta1">See What We Can Build You</a>
+                <a class="btn-whatsapp" href="https://wa.me/966582773696?text=Assalamualaikum%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20restaurant" target="_blank" rel="noopener" data-i18n="hero.cta2">💬 Chat on WhatsApp</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hbadge" data-i18n="hero.badge1">✓ Halal Badge Shown</div>
+            <div class="food-plate">
+                <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&h=500&fit=crop&crop=center" alt="Biryani" loading="lazy">
+            </div>
+            <div class="hphone">
+                <div class="screen-top">Al-Madina Restaurant</div>
+                <div class="screen-body">
+                    <div class="chip"></div>
+                    <div class="chip wa" data-i18n="hero.phoneWa">💬 Order on WhatsApp</div>
+                    <div class="chip" style="margin-top:10px"></div>
+                    <div class="chip" style="height:36px"></div>
+                </div>
+            </div>
+            <div class="hbadge2" data-i18n="hero.badge2">📍 Found on Google Maps</div>
+        </div>
+    </section>
+
+    <div class="trust-strip">
+        <div class="wrap trust-inner">
+            <span data-i18n="trust.t1">✓ We Speak Urdu, Hindi & English</span>
+            <span data-i18n="trust.t2">✓ WhatsApp Ordering Set Up For You</span>
+            <span data-i18n="trust.t3">✓ 7-Day Free Trial</span>
+            <span data-i18n="trust.t4">✓ No Tech Knowledge Needed</span>
+        </div>
+    </div>
+
+    <section id="services" class="wrap">
+        <div class="section-head">
+            <h2 data-i18n="services.title">Everything your restaurant needs online</h2>
+            <p data-i18n="services.lead">You focus on the food. We handle everything on the screen.</p>
+        </div>
+        <div class="services-grid">
+            <div class="svc">
+                <div class="icon">📋</div>
+                <h3 data-i18n="services.s1h">Your Menu, Online</h3>
+                <p data-i18n="services.s1p">A clean menu page with your dishes, prices and photos — so customers know exactly what you serve before they even call.</p>
+            </div>
+            <div class="svc">
+                <div class="icon">💬</div>
+                <h3 data-i18n="services.s2h">Orders on WhatsApp</h3>
+                <p data-i18n="services.s2p">A button that opens WhatsApp directly, so customers can order the way they already know how — no app to download, no confusion.</p>
+            </div>
+            <div class="svc">
+                <div class="icon">📍</div>
+                <h3 data-i18n="services.s3h">Show Up on Google</h3>
+                <p data-i18n="services.s3p">When someone nearby searches "Pakistani food near me" or "Indian restaurant," your restaurant comes up — not just your competitor's.</p>
+            </div>
+            <div class="svc">
+                <div class="icon">📅</div>
+                <h3 data-i18n="services.s4h">Table Booking Made Easy</h3>
+                <p data-i18n="services.s4p">A simple booking form for family dinners and events, so you're not missing calls during your busiest hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="wrap">
+        <div class="work">
+            <div class="work-visual">
+                <div class="wv-top">
+                    <span class="thumb"><img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=80&h=80&fit=crop&crop=center" alt="Zaiqa" loading="lazy"></span>
+                    Zaiqa Restaurant
+                </div>
+                <div class="wv-body">
+                    <div class="wv-row"><span data-i18n="work.r1">Halal Certified</span><span>✓</span></div>
+                    <div class="wv-row"><span data-i18n="work.r2">Menu Pages</span><span>6</span></div>
+                    <div class="wv-row"><span data-i18n="work.r3">WhatsApp Ordering</span><span data-i18n="work.active">✓ Active</span></div>
+                    <div class="wv-row"><span data-i18n="work.r4">Table Booking Form</span><span data-i18n="work.active">✓ Active</span></div>
+                    <div class="wv-row"><span data-i18n="work.r5">Shows on Google Maps</span><span data-i18n="work.live">✓ Live</span></div>
+                </div>
+            </div>
+            <div class="work-text">
+                <h2 data-i18n="work.title">Here's an example of what we build</h2>
+                <p data-i18n="work.lead">This is a real example website we built for a Pakistani & Indian restaurant — halal badge front and center, full menu with prices, WhatsApp ordering button, and a table booking form. This is the kind of site your restaurant could have too.</p>
+                <a class="btn-primary" href="#contact" data-i18n="work.cta">I Want This For My Restaurant</a>
+            </div>
+        </div>
+        <div class="gal-row">
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400&h=400&fit=crop&crop=center" alt="Biryani" loading="lazy"></div>
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=400&fit=crop&crop=center" alt="Curry" loading="lazy"></div>
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=400&fit=crop&crop=center" alt="Kebab" loading="lazy"></div>
+            <div class="gal-item"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&h=400&fit=crop&crop=center" alt="Gulab Jamun" loading="lazy"></div>
+        </div>
+    </section>
+
+    <section id="pricing" class="wrap">
+        <div class="section-head" style="margin-inline:auto;text-align:center">
+            <h2 data-i18n="pricing.title">Simple pricing. No surprises.</h2>
+            <p style="margin-inline:auto" data-i18n="pricing.lead">Pick monthly if you want to try it out, or save more by paying yearly.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pplan">
+                <h3 data-i18n="pricing.basic">Basic</h3>
+                <div class="price">26<span data-i18n="pricing.mo"> SR / month</span></div>
+                <ul>
+                    <li data-i18n="pricing.b1">Your menu online with photos</li>
+                    <li data-i18n="pricing.b2">Works perfectly on phones</li>
+                    <li data-i18n="pricing.b3">Basic support if something's wrong</li>
+                    <li data-i18n="pricing.b4">7 days free — cancel anytime</li>
+                </ul>
+                <a class="btn-primary" href="#contact" style="width:100%;justify-content:center" data-i18n="pricing.startBasic">Start With Basic</a>
+            </div>
+            <div class="pplan pop">
+                <span class="tag" data-i18n="pricing.mostChosen">MOST CHOSEN</span>
+                <h3 data-i18n="pricing.complete">Complete</h3>
+                <div class="price">58.5<span data-i18n="pricing.mo"> SR / month</span></div>
+                <ul>
+                    <li data-i18n="pricing.c1">Everything in Basic</li>
+                    <li data-i18n="pricing.c2">WhatsApp ordering button set up for you</li>
+                    <li data-i18n="pricing.c3">Google Maps visibility</li>
+                    <li data-i18n="pricing.c4">Table booking form</li>
+                    <li data-i18n="pricing.c5">Halal badge & photos shown clearly</li>
+                </ul>
+                <a class="btn-primary" href="#contact" style="width:100%;justify-content:center;background:var(--gold);color:var(--charcoal)" data-i18n="pricing.startComplete">Start With Complete</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="wrap">
+        <div class="section-head" style="margin-inline:auto;text-align:center">
+            <h2 data-i18n="testi.title">What restaurant owners say</h2>
+        </div>
+        <div class="testi-grid">
+            <div class="testi">
+                <div class="stars">★★★★★</div>
+                <p data-i18n="testi.q1">"I didn't understand any of the tech stuff, but they explained everything in plain words and just got it done."</p>
+                <div class="testi-name" data-i18n="testi.n1">— Restaurant Owner, Jeddah</div>
+            </div>
+            <div class="testi">
+                <div class="stars">★★★★★</div>
+                <p data-i18n="testi.q2">"Orders on WhatsApp changed everything. Customers just message us now instead of calling and waiting."</p>
+                <div class="testi-name" data-i18n="testi.n2">— Restaurant Owner, Bradford</div>
+            </div>
+            <div class="testi">
+                <div class="stars">★★★★★</div>
+                <p data-i18n="testi.q3">"People started finding us on Google Maps within the first week. That never happened before."</p>
+                <div class="testi-name" data-i18n="testi.n3">— Restaurant Owner, Leicester</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="wrap">
+        <div class="section-head">
+            <h2 data-i18n="faq.title">Questions restaurant owners usually ask</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q"><span data-i18n="faq.q1">I don't know anything about websites — is that a problem?</span> <span class="plus">+</span></div>
+                <div class="faq-a"><p data-i18n="faq.a1">Not at all. Most of our clients have never built a website before. You just tell us about your restaurant and menu, we handle everything technical.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span data-i18n="faq.q2">Can customers order directly through WhatsApp?</span> <span class="plus">+</span></div>
+                <div class="faq-a"><p data-i18n="faq.a2">Yes. We set up a button on your site that opens a WhatsApp chat with your restaurant already started — customers just type their order.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span data-i18n="faq.q3">How long does it take to get my website live?</span> <span class="plus">+</span></div>
+                <div class="faq-a"><p data-i18n="faq.a3">Usually 1–2 weeks once we have your menu, photos and business details.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span data-i18n="faq.q4">Do I have to pay before I try it?</span> <span class="plus">+</span></div>
+                <div class="faq-a"><p data-i18n="faq.a4">No. Every plan comes with 7 days free. You only start paying if you're happy with it.</p></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q"><span data-i18n="faq.q5">Can you help even if my restaurant isn't in Saudi Arabia?</span> <span class="plus">+</span></div>
+                <div class="faq-a"><p data-i18n="faq.a5">Yes — we work with restaurants in Saudi Arabia, the UK, Pakistan and India. Everything is done remotely over WhatsApp and email.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="wrap">
+        <div class="contact">
+            <div class="contact-grid">
+                <div>
+                    <h2 data-i18n="contact.title">Let's get your restaurant online</h2>
+                    <p data-i18n="contact.lead">Send us your restaurant name and a bit about your menu — we'll reply within a day with next steps.</p>
+                    <div class="contact-links">
+                        <a href="tel:+966582773696">📞 +966 58 277 3696</a>
+                        <a href="https://wa.me/966582773696" target="_blank" rel="noopener" data-i18n="contact.wa">💬 Message us on WhatsApp</a>
+                    </div>
+                </div>
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="32c44240-1fd3-4a64-abc8-762d6285df25">
+                    <input type="hidden" name="subject" value="New restaurant enquiry — ARH">
+                    <div class="form-field"><label data-i18n="contact.fname">YOUR NAME</label><input type="text" name="name" required></div>
+                    <div class="form-field"><label data-i18n="contact.frest">RESTAURANT NAME</label><input type="text" name="restaurant" required></div>
+                    <div class="form-field"><label data-i18n="contact.fphone">PHONE OR WHATSAPP</label><input type="tel" name="phone" required></div>
+                    <div class="form-field"><label data-i18n="contact.fmsg">TELL US A BIT ABOUT YOUR RESTAURANT</label><textarea name="message" required placeholder="Type of food, location, and what you'd like your website to do..." data-i18n-placeholder="contact.fmsgph"></textarea></div>
+                    <button type="submit" class="submit-btn" data-i18n="contact.submit">Send — We'll Reply Within a Day</button>
+                    <div class="submit-msg" id="submitMsg"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="wrap">
+        <p><strong>ARH</strong> — <span data-i18n="footer.tag1">Websites for Restaurants</span> · Jeddah, Saudi Arabia</p>
+        <p style="margin-top:6px" data-i18n="footer.tag2">We speak Urdu, Hindi, Arabic & English</p>
+    </footer>
+
+    <a class="wa-float" href="https://wa.me/966582773696?text=Assalamualaikum%2C%20I%27m%20interested%20in%20a%20website%20for%20my%20restaurant" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 32 32" fill="white"><path d="M16.01 3C9.38 3 4 8.38 4 15.01c0 2.51.66 4.86 1.8 6.9L4 29l7.28-1.9a11.9 11.9 0 0 0 4.73.97h.01c6.63 0 12-5.38 12-12.01C28.02 8.38 22.65 3 16.01 3zm0 21.8h-.01a9.7 9.7 0 0 1-4.94-1.35l-.35-.21-3.53.93.94-3.44-.23-.35a9.7 9.7 0 0 1-1.49-5.17c0-5.37 4.37-9.74 9.74-9.74 2.6 0 5.05 1.02 6.89 2.86a9.68 9.68 0 0 1 2.85 6.9c0 5.37-4.38 9.57-9.87 9.57zm5.34-7.28c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.15-.17.19-.34.22-.63.07-.29-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.91-2.18-.24-.57-.48-.5-.66-.51h-.56c-.19 0-.51.07-.78.36-.27.29-1.02 1-1.02 2.43s1.04 2.82 1.19 3.02c.15.19 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.19-.55-.34z"/></svg>
+    </a>
+
+    <script>
+        const i18n = {
+            en: {
+                "nav.tagline": "WEBSITES FOR RESTAURANTS",
+                "nav.services": "What You Get",
+                "nav.work": "Example",
+                "nav.pricing": "Pricing",
+                "nav.faq": "Questions",
+                "nav.contact": "Contact",
+                "nav.cta": "Talk to Us",
+                "hero.title": 'Get more customers <em>ordering</em> and <em>booking</em> — without any tech headache.',
+                "hero.p": "We build simple websites for restaurants — your menu online, orders on WhatsApp, and your restaurant showing up when people search on Google. We handle everything. You just get more customers.",
+                "hero.cta1": "See What We Can Build You",
+                "hero.cta2": "💬 Chat on WhatsApp",
+                "hero.badge1": "✓ Halal Badge Shown",
+                "hero.badge2": "📍 Found on Google Maps",
+                "hero.phoneWa": "💬 Order on WhatsApp",
+                "trust.t1": "✓ We Speak Urdu, Hindi & English",
+                "trust.t2": "✓ WhatsApp Ordering Set Up For You",
+                "trust.t3": "✓ 7-Day Free Trial",
+                "trust.t4": "✓ No Tech Knowledge Needed",
+                "services.title": "Everything your restaurant needs online",
+                "services.lead": "You focus on the food. We handle everything on the screen.",
+                "services.s1h": "Your Menu, Online",
+                "services.s1p": "A clean menu page with your dishes, prices and photos — so customers know exactly what you serve before they even call.",
+                "services.s2h": "Orders on WhatsApp",
+                "services.s2p": "A button that opens WhatsApp directly, so customers can order the way they already know how — no app to download, no confusion.",
+                "services.s3h": "Show Up on Google",
+                "services.s3p": 'When someone nearby searches "Pakistani food near me" or "Indian restaurant," your restaurant comes up — not just your competitor\'s.',
+                "services.s4h": "Table Booking Made Easy",
+                "services.s4p": "A simple booking form for family dinners and events, so you're not missing calls during your busiest hours.",
+                "work.title": "Here's an example of what we build",
+                "work.lead": "This is a real example website we built for a Pakistani & Indian restaurant — halal badge front and center, full menu with prices, WhatsApp ordering button, and a table booking form. This is the kind of site your restaurant could have too.",
+                "work.cta": "I Want This For My Restaurant",
+                "work.r1": "Halal Certified",
+                "work.r2": "Menu Pages",
+                "work.r3": "WhatsApp Ordering",
+                "work.r4": "Table Booking Form",
+                "work.r5": "Shows on Google Maps",
+                "work.active": "✓ Active",
+                "work.live": "✓ Live",
+                "pricing.title": "Simple pricing. No surprises.",
+                "pricing.lead": "Pick monthly if you want to try it out, or save more by paying yearly.",
+                "pricing.basic": "Basic",
+                "pricing.complete": "Complete",
+                "pricing.mo": " SR / month",
+                "pricing.mostChosen": "MOST CHOSEN",
+                "pricing.b1": "Your menu online with photos",
+                "pricing.b2": "Works perfectly on phones",
+                "pricing.b3": "Basic support if something's wrong",
+                "pricing.b4": "7 days free — cancel anytime",
+                "pricing.c1": "Everything in Basic",
+                "pricing.c2": "WhatsApp ordering button set up for you",
+                "pricing.c3": "Google Maps visibility",
+                "pricing.c4": "Table booking form",
+                "pricing.c5": "Halal badge & photos shown clearly",
+                "pricing.startBasic": "Start With Basic",
+                "pricing.startComplete": "Start With Complete",
+                "testi.title": "What restaurant owners say",
+                "testi.q1": '"I didn\'t understand any of the tech stuff, but they explained everything in plain words and just got it done."',
+                "testi.n1": "— Restaurant Owner, Jeddah",
+                "testi.q2": '"Orders on WhatsApp changed everything. Customers just message us now instead of calling and waiting."',
+                "testi.n2": "— Restaurant Owner, Bradford",
+                "testi.q3": '"People started finding us on Google Maps within the first week. That never happened before."',
+                "testi.n3": "— Restaurant Owner, Leicester",
+                "faq.title": "Questions restaurant owners usually ask",
+                "faq.q1": "I don't know anything about websites — is that a problem?",
+                "faq.a1": "Not at all. Most of our clients have never built a website before. You just tell us about your restaurant and menu, we handle everything technical.",
+                "faq.q2": "Can customers order directly through WhatsApp?",
+                "faq.a2": "Yes. We set up a button on your site that opens a WhatsApp chat with your restaurant already started — customers just type their order.",
+                "faq.q3": "How long does it take to get my website live?",
+                "faq.a3": "Usually 1–2 weeks once we have your menu, photos and business details.",
+                "faq.q4": "Do I have to pay before I try it?",
+                "faq.a4": "No. Every plan comes with 7 days free. You only start paying if you're happy with it.",
+                "faq.q5": "Can you help even if my restaurant isn't in Saudi Arabia?",
+                "faq.a5": "Yes — we work with restaurants in Saudi Arabia, the UK, Pakistan and India. Everything is done remotely over WhatsApp and email.",
+                "contact.title": "Let's get your restaurant online",
+                "contact.lead": "Send us your restaurant name and a bit about your menu — we'll reply within a day with next steps.",
+                "contact.wa": "💬 Message us on WhatsApp",
+                "contact.fname": "YOUR NAME",
+                "contact.frest": "RESTAURANT NAME",
+                "contact.fphone": "PHONE OR WHATSAPP",
+                "contact.fmsg": "TELL US A BIT ABOUT YOUR RESTAURANT",
+                "contact.fmsgph": "Type of food, location, and what you'd like your website to do...",
+                "contact.submit": "Send — We'll Reply Within a Day",
+                "footer.tag1": "Websites for Restaurants",
+                "footer.tag2": "We speak Urdu, Hindi, Arabic & English"
+            },
+            ur: {
+                "nav.tagline": "ریسٹورنٹس کے لیے ویب سائٹس",
+                "nav.services": "کیا ملے گا",
+                "nav.work": "مثال",
+                "nav.pricing": "قیمتیں",
+                "nav.faq": "سوالات",
+                "nav.contact": "رابطہ",
+                "nav.cta": "بات کریں",
+                "hero.title": 'مزید گاہک حاصل کریں <em>آرڈر</em> اور <em>بکنگ</em> کے ذریعے — بغیر کسی ٹیکنیکل پریشانی کے۔',
+                "hero.p": "ہم ریسٹورنٹس کے لیے آسان ویب سائٹس بناتے ہیں — آپ کا مینو آن لائن، واٹس ایپ پر آرڈرز، اور جب لوگ گوگل پر تلاش کریں تو آپ کا ریسٹورنٹ سامنے آئے۔ سب کچھ ہم سنبھالتے ہیں۔ آپ کو صرف زیادہ گاہک ملتے ہیں۔",
+                "hero.cta1": "دیکھیں ہم آپ کے لیے کیا بنا سکتے ہیں",
+                "hero.cta2": "💬 واٹس ایپ پر پیغام بھیجیں",
+                "hero.badge1": "✓ حلال کا بیج نمایاں",
+                "hero.badge2": "📍 گوگل میپس پر موجود",
+                "hero.phoneWa": "💬 واٹس ایپ پر آرڈر کریں",
+                "trust.t1": "✓ ہم اردو، ہندی اور انگریزی بولتے ہیں",
+                "trust.t2": "✓ واٹس ایپ آرڈرنگ آپ کے لیے ترتیب دی گئی",
+                "trust.t3": "✓ 7 دن مفت آزمائش",
+                "trust.t4": "✓ کسی ٹیکنیکل علم کی ضرورت نہیں",
+                "services.title": "آپ کے ریسٹورنٹ کو آن لائن درکار ہر چیز",
+                "services.lead": "آپ کھانے پر توجہ دیں، باقی اسکرین کا کام ہم سنبھالتے ہیں۔",
+                "services.s1h": "آپ کا مینو، آن لائن",
+                "services.s1p": "آپ کے پکوانوں، قیمتوں اور تصاویر کے ساتھ ایک صاف مینو صفحہ — تاکہ گاہکوں کو فون کرنے سے پہلے ہی معلوم ہو کہ آپ کیا پیش کرتے ہیں۔",
+                "services.s2h": "واٹس ایپ پر آرڈرز",
+                "services.s2p": "ایک بٹن جو براہ راست واٹس ایپ کھولتا ہے، تاکہ گاہک اسی طریقے سے آرڈر کر سکیں جو وہ پہلے سے جانتے ہیں — نہ کوئی ایپ ڈاؤن لوڈ، نہ کوئی الجھن۔",
+                "services.s3h": "گوگل پر نظر آئیں",
+                "services.s3p": 'جب کوئی قریب میں "پاکستانی کھانا" یا "انڈین ریسٹورنٹ" تلاش کرے، تو آپ کا ریسٹورنٹ سامنے آئے — صرف آپ کے مدمقابل کا نہیں۔',
+                "services.s4h": "آسان ٹیبل بکنگ",
+                "services.s4p": "خاندانی ڈنر اور تقریبات کے لیے ایک سادہ بکنگ فارم، تاکہ مصروف اوقات میں آپ کی کالز ضائع نہ ہوں۔",
+                "work.title": "یہ رہی ہماری بنائی ہوئی ایک مثال",
+                "work.lead": "یہ ایک حقیقی مثال ہے جو ہم نے پاکستانی اور انڈین ریسٹورنٹ کے لیے بنائی — حلال بیج نمایاں، مکمل مینو قیمتوں کے ساتھ، واٹس ایپ آرڈرنگ بٹن، اور ٹیبل بکنگ فارم۔ آپ کے ریسٹورنٹ کے لیے بھی ایسی ہی سائٹ بن سکتی ہے۔",
+                "work.cta": "میں اپنے ریسٹورنٹ کے لیے یہ چاہتا ہوں",
+                "work.r1": "حلال مصدقہ",
+                "work.r2": "مینو کے صفحات",
+                "work.r3": "واٹس ایپ آرڈرنگ",
+                "work.r4": "ٹیبل بکنگ فارم",
+                "work.r5": "گوگل میپس پر دکھائی دیتا ہے",
+                "work.active": "✓ فعال",
+                "work.live": "✓ زندہ",
+                "pricing.title": "سادہ قیمتوں کا نظام۔ کوئی پوشیدہ چارجز نہیں۔",
+                "pricing.lead": "آزمانے کے لیے ماہانہ لیں، یا سالانہ ادائیگی کر کے زیادہ بچائیں۔",
+                "pricing.basic": "بنیادی",
+                "pricing.complete": "مکمل",
+                "pricing.mo": " ریال / ماہ",
+                "pricing.mostChosen": "سب سے زیادہ منتخب",
+                "pricing.b1": "تصاویر کے ساتھ آپ کا مینو آن لائن",
+                "pricing.b2": "موبائل فون پر بالکل درست کام کرتا ہے",
+                "pricing.b3": "بنیادی مدد اگر کوئی مسئلہ ہو",
+                "pricing.b4": "7 دن مفت — کسی بھی وقت منسوخ کریں",
+                "pricing.c1": "بنیادی میں شامل تمام خصوصیات",
+                "pricing.c2": "واٹس ایپ آرڈرنگ بٹن آپ کے لیے ترتیب دیا گیا",
+                "pricing.c3": "گوگل میپس پر نمائش",
+                "pricing.c4": "ٹیبل بکنگ فارم",
+                "pricing.c5": "حلال بیج اور تصاویر واضح طور پر دکھائی گئیں",
+                "pricing.startBasic": "بنیادی سے شروع کریں",
+                "pricing.startComplete": "مکمل سے شروع کریں",
+                "testi.title": "ریسٹورنٹ مالکان کیا کہتے ہیں",
+                "testi.q1": '"مجھے ٹیکنیکل چیزیں سمجھ نہیں آتی تھیں، لیکن انہوں نے سب کچھ آسان الفاظ میں سمجھایا اور کام مکمل کر دیا۔"',
+                "testi.n1": "— ریسٹورنٹ مالک، جدہ",
+                "testi.q2": '"واٹس ایپ پر آرڈرز نے سب کچھ بدل دیا۔ گاہک اب کال کرنے اور انتظار کرنے کے بجائے صرف پیغام بھیجتے ہیں۔"',
+                "testi.n2": "— ریسٹورنٹ مالک، بریڈفورڈ",
+                "testi.q3": '"پہلے ہفتے میں ہی لوگوں نے گوگل میپس پر ہمیں تلاش کرنا شروع کر دیا۔ یہ پہلے کبھی نہیں ہوا تھا۔"',
+                "testi.n3": "— ریسٹورنٹ مالک، لیسٹر",
+                "faq.title": "اکثر پوچھے جانے والے سوالات",
+                "faq.q1": "مجھے ویب سائٹس کے بارے میں کچھ نہیں آتا — کیا یہ مسئلہ ہے؟",
+                "faq.a1": "بالکل نہیں۔ ہمارے زیادہ تر کلائنٹس نے پہلے کبھی ویب سائٹ نہیں بنائی۔ آپ صرف اپنے ریسٹورنٹ اور مینو کے بارے میں بتائیں، باقی تکنیکی کام ہم سنبھالتے ہیں۔",
+                "faq.q2": "کیا گاہک براہ راست واٹس ایپ سے آرڈر کر سکتے ہیں؟",
+                "faq.a2": "جی ہاں۔ ہم آپ کی سائٹ پر ایک بٹن لگاتے ہیں جو واٹس ایپ چیٹ کھولتا ہے، اور آپ کا ریسٹورنٹ پہلے سے موجود ہوتا ہے — گاہک صرف اپنا آرڈر ٹائپ کرتے ہیں۔",
+                "faq.q3": "میری ویب سائٹ لائیو ہونے میں کتنا وقت لگتا ہے؟",
+                "faq.a3": "عام طور پر 1-2 ہفتے جب ہمیں آپ کا مینو، تصاویر اور کاروباری تفصیلات مل جائیں۔",
+                "faq.q4": "کیا مجھے آزمانے سے پہلے ادائیگی کرنی ہوگی؟",
+                "faq.a4": "نہیں۔ ہر پلان کے ساتھ 7 دن مفت ملتے ہیں۔ آپ صرف تب ادائیگی شروع کرتے ہیں جب آپ خوش ہوں۔",
+                "faq.q5": "اگر میرا ریسٹورنٹ سعودی عرب میں نہیں تو کیا آپ مدد کر سکتے ہیں؟",
+                "faq.a5": "جی ہاں — ہم سعودی عرب، برطانیہ، پاکستان اور انڈیا میں ریسٹورنٹس کے ساتھ کام کرتے ہیں۔ سب کچھ واٹس ایپ اور ای میل کے ذریعے دور سے کیا جاتا ہے۔",
+                "contact.title": "آئیے آپ کے ریسٹورنٹ کو آن لائن لے چلیں",
+                "contact.lead": "ہمیں اپنے ریسٹورنٹ کا نام اور مینو کے بارے میں کچھ بتائیں — ہم ایک دن کے اندر اگلے مراحل کے ساتھ جواب دیں گے۔",
+                "contact.wa": "💬 واٹس ایپ پر پیغام بھیجیں",
+                "contact.fname": "آپ کا نام",
+                "contact.frest": "ریسٹورنٹ کا نام",
+                "contact.fphone": "فون یا واٹس ایپ نمبر",
+                "contact.fmsg": "اپنے ریسٹورنٹ کے بارے میں کچھ بتائیں",
+                "contact.fmsgph": "کھانے کی قسم، مقام، اور آپ ویب سائٹ سے کیا چاہتے ہیں...",
+                "contact.submit": "بھیجیں — ہم ایک دن کے اندر جواب دیں گے",
+                "footer.tag1": "ریسٹورنٹس کے لیے ویب سائٹس",
+                "footer.tag2": "ہم اردو، ہندی، عربی اور انگریزی بولتے ہیں"
+            }
+        };
+
+        function applyLang(lang) {
+            const dict = i18n[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) el.innerHTML = dict[key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+            });
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ur' ? 'rtl' : 'ltr');
+            langToggle.textContent = lang === 'ur' ? 'English' : 'اردو';
+            try { localStorage.setItem('arh-r-lang', lang); } catch (e) {}
+        }
+        const langToggle = document.getElementById('langToggle');
+        let savedLang = 'en';
+        try { savedLang = localStorage.getItem('arh-r-lang') || 'en'; } catch (e) {}
+        applyLang(savedLang);
+        langToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('lang') === 'ur' ? 'ur' : 'en';
+            applyLang(current === 'ur' ? 'en' : 'ur');
+        });
+
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-q').addEventListener('click', () => {
+                document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('open') });
+                item.classList.toggle('open');
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const msg = document.getElementById('submitMsg');
+            const btn = form.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            try {
+                const res = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json',
+                        Accept: 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(
+                    form))) });
+                const data = await res.json();
+                if (data.success) { msg.textContent = "✓ Got it — we'll reply within a day.";
+                    msg.style.color = 'var(--gold)';
+                    form.reset(); } else { msg.textContent = '⚠ Something went wrong. Please WhatsApp us instead.';
+                    msg.style.color = '#ffb3b3'; }
+            } catch (err) { msg.textContent = '⚠ Could not send. Please WhatsApp us instead.';
+                msg.style.color = '#ffb3b3'; }
+            msg.classList.add('show');
+            btn.disabled = false;
+            btn.textContent = "Send — We'll Reply Within a Day";
+        });
+    </script>
+</body>
+</html>
